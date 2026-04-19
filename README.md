@@ -10,6 +10,7 @@ Production-ready MVP for a diaspora investment platform connecting African found
 - NextAuth credentials auth (admin only)
 
 ## Features
+- `postinstall` runs `prisma generate` automatically to avoid stale Prisma Client on Vercel builds.
 - Landing page with featured project
 - Projects marketplace with search/filter
 - Project detail pages + express interest CTA
