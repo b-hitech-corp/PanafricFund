@@ -54,7 +54,7 @@ Production-ready MVP for a diaspora investment platform connecting African found
 2. Import project in Vercel.
 3. Add managed Postgres (Vercel Postgres or external Neon/Supabase).
 4. Add environment variables from `.env.example`.
-5. Set build command: `npm run build`.
+5. Set build command: `npm run build` (this runs `prisma generate && next build`).
 6. Set install command: `npm install`.
 7. Run Prisma migrate as part of deployment workflow (recommended):
    - `npx prisma migrate deploy`
