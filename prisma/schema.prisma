@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ModelType {
+  EQUITY
+  PROFIT_SHARE
+  DEBT
+}
+
+enum ProjectStatus {
+  DRAFT
+  REVIEW
+  OPEN
+  FUNDED
+  CLOSED
+}
+
+model Project {
+  id                  String        @id @default(cuid())
+  slug                String        @unique
+  title               String
+  founderName         String
+  companyName         String
+  shortDescription    String
+  fullDescription     String
+  fundingTarget       Int
+  amountRaised        Int           @default(0)
+  minimumContribution Int
+  modelType           ModelType
+  category            String
+  country             String
+  stage               String
+  useOfFunds          String
+  milestones          String
+  riskDisclosure      String
+  mentorshipIncluded  Boolean       @default(true)
+  featured            Boolean       @default(false)
+  status              ProjectStatus @default(DRAFT)
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  interests FunderInterest[]
+}
+
+model FounderApplication {
+  id            String    @id @default(cuid())
+  name          String
+  email         String
+  companyName   String
+  country       String
+  industry      String
+  summary       String
+  fundingAmount Int
+  modelType     ModelType
+  pitchDeckUrl  String
+  website       String?
+  stage         String
+  revenue       Boolean
+  notes         String?
+  createdAt     DateTime  @default(now())
+}
+
+model FunderInterest {
+  id            String    @id @default(cuid())
+  name          String
+  email         String
+  country       String
+  diaspora      String?
+  amount        Int
+  projectId     String
+  project       Project   @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  modelType     ModelType
+  acceptedTerms Boolean
+  createdAt     DateTime  @default(now())
+}
+
+model AdminUser {
+  id       String @id @default(cuid())
+  email    String @unique
+  password String
+}
