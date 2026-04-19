@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import { ModelType, ProjectStatus } from "@prisma/client";
 import { Card } from "@/components/ui/card";
