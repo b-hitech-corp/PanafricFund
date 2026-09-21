@@ -1,0 +1,1 @@
+postgresql://neondb_owner:npg_z3biPrn5mDMa@ep-rapid-water-b4iwm11h-pooler.c-6.us-east-2.aws.neon.tech/panafricfund?sslmode=require&channel_binding=require
