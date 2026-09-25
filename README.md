@@ -1,4 +1,4 @@
-# PanAfricFund MVP
+# PanAfric Fund MVP
 
 Production-ready MVP for a diaspora investment platform connecting African founders and global funders.
 
